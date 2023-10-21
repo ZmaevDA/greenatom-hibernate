@@ -6,17 +6,17 @@ import org.springframework.web.bind.annotation.*;
 import ru.greenatom.zmaev.greenatomhibernate.domain.dto.PersonDTO;
 import ru.greenatom.zmaev.greenatomhibernate.domain.entity.Person;
 import ru.greenatom.zmaev.greenatomhibernate.domain.entity.PersonRequest;
-import ru.greenatom.zmaev.greenatomhibernate.sevice.PersonServiceHQL;
+import ru.greenatom.zmaev.greenatomhibernate.sevice.PersonServiceCrApi;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/person")
-public class PersonController {
+@RequestMapping(value = "/api/personCrApi")
+public class PersonControllerCrApi {
 
-    private final PersonServiceHQL personService;
+    private final PersonServiceCrApi personService;
 
-    public PersonController(PersonServiceHQL personService) {
+    public PersonControllerCrApi(PersonServiceCrApi personService) {
         this.personService = personService;
     }
 
@@ -24,8 +24,6 @@ public class PersonController {
     public ResponseEntity<List<Person>> getPersons(@RequestBody PersonRequest personRequest) {
         return new ResponseEntity<>(personService.findAll(personRequest), HttpStatus.OK);
     }
-
-
 
     @GetMapping(value = "/get/{id}")
     public ResponseEntity<PersonDTO> getPerson(@PathVariable Long id) {
@@ -67,4 +65,5 @@ public class PersonController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 }

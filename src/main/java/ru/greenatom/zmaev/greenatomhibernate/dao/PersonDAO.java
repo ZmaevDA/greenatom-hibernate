@@ -16,4 +16,5 @@ public interface PersonDAO {
     Person findById(Long id);
 
     List<Person> findAll(PersonRequest personRequest);
+
 }

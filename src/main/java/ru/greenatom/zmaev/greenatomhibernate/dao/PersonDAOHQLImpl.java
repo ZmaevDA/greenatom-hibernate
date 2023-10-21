@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class PersonDAOImpl implements PersonDAO {
+public class PersonDAOHQLImpl implements PersonDAO {
 
     @Override
     public void create(Person person) {
